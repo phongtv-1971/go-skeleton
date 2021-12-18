@@ -19,6 +19,7 @@ func init() {
 		gin.SetMode(gin.ReleaseMode)
 		f, _ := os.Create("logs/production.log")
 		gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
+		log.Println("Service RUN on RELEASE mode")
 	} else {
 		log.Println("Service RUN on DEBUG mode")
 	}

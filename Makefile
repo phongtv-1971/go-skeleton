@@ -5,6 +5,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=go_skeleton
 APP_ENV=development
+BINARY=go-skeleton
 
 tasks:
 	@echo Usage: make [task]
@@ -45,4 +46,10 @@ test:
 server:
 	APP_ENV=$(APP_ENV) go run main.go
 
-.PHONY: tasks migrate-up migrate-down generate-migration create-database drop-database setup-test remove-setup-test sqlc test server
+build:
+	@echo "Build binary file..."
+	go build -o build/$(BINARY) main.go
+	@echo "Copy config..."
+	cp config.yaml.example build/config.yaml
+
+.PHONY: tasks migrate-up migrate-down generate-migration create-database drop-database setup-test remove-setup-test sqlc test server build

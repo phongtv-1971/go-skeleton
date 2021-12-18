@@ -3,7 +3,6 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	db "github.com/phongtv-1971/go-skeleton/db/sqlc"
-	"github.com/phongtv-1971/go-skeleton/middware"
 	"net/http"
 )
 
@@ -17,7 +16,6 @@ func NewServer(store *db.Store) *Server {
 
 	/*Config default Gin*/
 	router := gin.Default()
-	router.Use(gin.LoggerWithFormatter(middware.CustomLog))
 
 	/* Load static file for api doc */
 	router.Static("/assets", "./doc/assets")
