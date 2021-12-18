@@ -1,0 +1,13 @@
+403:
+  description: Forbidden
+  content:
+    application/json:
+      schema:
+        $ref: "../definitions/common.yaml#/errors_object"
+      examples:
+        "Forbidden: Not allowed":
+          value:
+            success: false
+            errors:
+            - code: 1202
+              message: Action Not Allowed

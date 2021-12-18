@@ -1,0 +1,14 @@
+development:
+  db_driver: postgres
+  db_source: postgresql://postgres:postgres@localhost:5432/go_skeleton_development?sslmode=disable
+  server_address: 0.0.0.0:8080
+
+test:
+  db_driver: postgres
+  db_source: postgresql://postgres:postgres@localhost:5432/go_skeleton_test?sslmode=disable
+  server_address: 0.0.0.0:8080
+
+production:
+  db_driver: postgres
+  db_source: postgresql://postgres:postgres@localhost:5432/go_skeleton_production?sslmode=disable
+  server_address: 0.0.0.0:8080

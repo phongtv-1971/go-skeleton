@@ -1,0 +1,132 @@
+without_id:
+  post:
+    summary: Create User
+    tags:
+      - Users
+    description: Api for create user
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of user
+                required: true
+                example: Truong Van Phong
+              email:
+                type: string
+                description: Email of user
+                required: true
+                example: truongvanphong97@gmail.com
+    responses:
+      200:
+        description: Successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                data:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: Truong Van Phong
+                    email:
+                      type: string
+                      example: truongvanphong97@gmail.com
+                    created_at:
+                      type: string
+                      example: "2021-12-18T14:41:10.261725Z"
+
+  get:
+    summary: Get List User
+    tags:
+      - Users
+    description: Api for get list user
+    parameters:
+      - in: query
+        name: page_id
+        schema:
+          type: integer
+        required: true
+        example: 1
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+        required: true
+        example: 5
+    responses:
+      200:
+        description: Successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                data:
+                  type: array
+                  items:
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: Truong Van Phong
+                      email:
+                        type: string
+                        example: truongvanphong97@gmail.com
+                      created_at:
+                        type: string
+                        example: "2021-12-18T14:41:10.261725Z"
+
+with_id:
+  get:
+    summary: Get User
+    tags:
+      - Users
+    description: Api for get user by id
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        example: 1
+    responses:
+      200:
+        description: Successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                data:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: Truong Van Phong
+                    email:
+                      type: string
+                      example: truongvanphong97@gmail.com
+                    created_at:
+                      type: string
+                      example: "2021-12-18T14:41:10.261725Z"

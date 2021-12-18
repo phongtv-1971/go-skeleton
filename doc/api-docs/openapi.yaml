@@ -1,0 +1,24 @@
+openapi: 3.0.1
+info:
+  description: "API document"
+  title: Go Base Api
+  version: v1
+components:
+ securitySchemes:
+   Jwt-Authorization:
+     type: apiKey
+     in: header
+     name: Jwt-Authorization
+     description: Authentication token
+security:
+ - Jwt-Authorization: []
+paths:
+  # Tag Health Check
+  /health_check:
+    $ref: "paths/health_check.yaml"
+
+  # Tag Users
+  /v1/users:
+    $ref: "paths/v1/user.yaml#without_id"
+  /v1/users/{id}:
+    $ref: "paths/v1/user.yaml#with_id"

@@ -1,0 +1,27 @@
+version: "3.8"
+
+x-logging: &default-logging
+  logging:
+    driver: json-file
+    options:
+      max-size: 50m
+
+services:
+  db:
+    image: postgres:14.1
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - base-network
+    <<: *default-logging
+
+volumes:
+  postgres-data:
+
+networks:
+  base-network:
+    driver: bridge

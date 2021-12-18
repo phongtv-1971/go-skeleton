@@ -1,0 +1,16 @@
+get:
+  summary: Health Check
+  tags:
+    - Health Check
+  description: Use this API to get server status
+  responses:
+    200:
+      description: Get server status successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
