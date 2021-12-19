@@ -44,6 +44,8 @@ APP_ENV=production build/go-skeleton server
 - sqlc v1.8.0
 - go-migrate v4.14.1
 - swagger source html, css, js
+- mockgen v1.6.0
+- golangci-lint v1.36.0
 
 ### Available Endpoint example
 ```shell

@@ -1,7 +1,7 @@
 package constants
 
 const (
-	Development string = "development"
+	Development = "development"
 	Test = "test"
 	Production = "production"
 )

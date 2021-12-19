@@ -56,4 +56,7 @@ build:
 mock:
 	bin/mockgen -package mockdb  -destination db/mock/store.go github.com/phongtv-1971/go-skeleton/db/sqlc Store
 
-.PHONY: tasks migrate-up migrate-down generate-migration create-database drop-database setup-test remove-setup-test sqlc test server build mock
+linter:
+	bin/golangci-lint run ./...
+
+.PHONY: tasks migrate-up migrate-down generate-migration create-database drop-database setup-test remove-setup-test sqlc test server build mock linter

@@ -1,7 +1,6 @@
 package api
 
 import (
-	"fmt"
 	"github.com/golang/mock/gomock"
 	"github.com/phongtv-1971/go-skeleton/constants"
 	mockdb "github.com/phongtv-1971/go-skeleton/db/mock"
@@ -19,7 +18,7 @@ func TestHealCheckApi (t *testing.T) {
 	server := NewServer(store, constants.Test)
 
 	recorder := httptest.NewRecorder()
-	url := fmt.Sprintf("/health_check")
+	url := "/health_check"
 	request, err := http.NewRequest(http.MethodGet, url, nil)
 	require.NoError(t, err)
 
