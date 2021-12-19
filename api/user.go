@@ -16,7 +16,7 @@ type createUserRequest struct {
 func (server *Server) createUser(ctx *gin.Context) {
 	var req createUserRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, util.ErrorResponse(err))
+		ctx.JSON(http.StatusBadRequest, util.ValidationErrorResponse(err))
 		return
 	}
 	arg := db.CreateUserParams{
@@ -40,7 +40,7 @@ type getUserRequest struct {
 func (server *Server) getUser(ctx *gin.Context) {
 	var req getUserRequest
 	if err := ctx.ShouldBindUri(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, util.ErrorResponse(err))
+		ctx.JSON(http.StatusBadRequest, util.ValidationErrorResponse(err))
 		return
 	}
 
@@ -64,7 +64,7 @@ type getListUserRequest struct {
 func (server *Server) listUser(ctx *gin.Context) {
 	var req getListUserRequest
 	if err := ctx.ShouldBindQuery(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, util.ErrorResponse(err))
+		ctx.JSON(http.StatusBadRequest, util.ValidationErrorResponse(err))
 		return
 	}
 

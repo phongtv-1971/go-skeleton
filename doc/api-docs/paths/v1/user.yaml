@@ -46,6 +46,25 @@ without_id:
                     created_at:
                       type: string
                       example: "2021-12-18T14:41:10.261725Z"
+      400:
+        description: Bad Request
+        content:
+          application/json:
+            schema:
+              $ref: "../../definations/common.yaml#/errors_object"
+            examples:
+              name required:
+                value:
+                  success: false
+                  errors:
+                    - field: Name
+                      message: Field Name is required.
+              email invalid:
+                value:
+                  success: false
+                  errors:
+                    - field: Email
+                      message: Field Email is invalid format.
 
   get:
     summary: Get List User
@@ -91,6 +110,25 @@ without_id:
                       created_at:
                         type: string
                         example: "2021-12-18T14:41:10.261725Z"
+      400:
+        description: Bad Request
+        content:
+          application/json:
+            schema:
+              $ref: "../../definations/common.yaml#/errors_object"
+            examples:
+              when page_id invalid:
+                value:
+                  success: false
+                  errors:
+                    - field: PageId
+                      message: Field PageId is not valid.
+              when page_size invalid:
+                value:
+                  success: false
+                  errors:
+                    - field: PageSize
+                      message: Field PageSize is not valid.
 
 with_id:
   get:
@@ -130,3 +168,22 @@ with_id:
                     created_at:
                       type: string
                       example: "2021-12-18T14:41:10.261725Z"
+      400:
+        description: Bad Request
+        content:
+          application/json:
+            schema:
+              $ref: "../../definations/common.yaml#/errors_object"
+            examples:
+              when id required:
+                value:
+                  success: false
+                  errors:
+                    - field: Id
+                      message: Field Id is required.
+              when id invalid:
+                value:
+                  success: false
+                  errors:
+                    - field: Id
+                      message: Field Id is not valid.

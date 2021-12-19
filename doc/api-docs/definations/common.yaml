@@ -9,17 +9,10 @@ errors_object:
       items:
         type: object
         properties:
-          resource:
-            type: string
-            nullable: true
-            description: The resource which is error
           field:
             type: string
             nullable: true
             description: The attribute which is incorrect
-          code:
-            type: integer
-            required: true
           message:
             type: string
             required: true
