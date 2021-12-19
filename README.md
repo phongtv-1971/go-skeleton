@@ -7,6 +7,11 @@ cp config.yaml.example config.yaml
 docker-compose up -d
 ```
 
+## View available make command
+```shell
+make help
+```
+
 ### Running test
 ```shell
 make setup-test
@@ -25,9 +30,9 @@ Ex: `make server APP_ENV=production`
 
 ### Generate migrate file
 ```shell
-make generate-migration FILENAME=file_name
+make generate-migration name=file_name
 ```
-Ex: `make generate-migration FILENAME=create_table_users`
+Ex: `make generate-migration name=create_table_users`
 
 ### Generate sqlc code
 ```shell
@@ -37,7 +42,7 @@ make sqlc
 ### Build a binary file and execute
 ```shell
 make build
-APP_ENV=production build/go-skeleton server
+APP_ENV=production build/go-skeleton
 ```
 
 ### Tool
