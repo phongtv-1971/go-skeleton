@@ -30,7 +30,7 @@ func NewServer(store db.Store, environment string) *Server {
 	router.GET("/health_check", server.healthCheck)
 
 	/* Mapping Api V1 route*/
-	v1 := router.Group("/v1")
+	v1 := router.Group("/api/v1")
 	{
 		v1.POST("/users", server.createUser)
 		v1.GET("/users/:id", server.getUser)

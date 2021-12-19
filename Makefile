@@ -41,8 +41,8 @@ sqlc:
 	bin/sqlc generate
 
 test:
-	go test -v -coverprofile cover.out  ./...
-	go tool cover -html=cover.out
+	go test -v -coverprofile coverage/cover.out  ./...
+	go tool cover -html=coverage/cover.out -o coverage/cover.html
 
 server:
 	APP_ENV=$(APP_ENV) go run main.go

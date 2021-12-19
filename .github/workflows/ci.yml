@@ -1,0 +1,38 @@
+name: Go
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14.1
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: go_skeleton_test
+        ports:
+          - 5432:5432
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+        id: go
+
+      - name: Checkout code into th Go module directory
+        uses: actions/checkout@v2
+
+      - name: Linter
+        run: make linter
+
+      - name: Test
+        run: |
+          cp config.yaml.example config.yaml
+          make migrate-up APP_ENV=test
+          go test -v -coverprofile cover.out  ./...

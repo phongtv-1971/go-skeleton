@@ -51,7 +51,7 @@ APP_ENV=production build/go-skeleton server
 ```shell
 GET    /api_doc
 GET    /health_check
-POST   /v1/users
-GET    /v1/users/:id
-GET    /v1/users
+POST   /api/v1/users
+GET    /api/v1/users/:id
+GET    /api/v1/users
 ```

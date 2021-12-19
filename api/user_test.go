@@ -94,7 +94,7 @@ func TestGetUserAPI(t *testing.T) {
 			server := NewServer(store, constants.Test)
 			recorder := httptest.NewRecorder()
 
-			url := fmt.Sprintf("/v1/users/%d", tc.userID)
+			url := fmt.Sprintf("/api/v1/users/%d", tc.userID)
 			request, err := http.NewRequest(http.MethodGet, url, nil)
 			require.NoError(t, err)
 

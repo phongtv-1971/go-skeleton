@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   description: "API document"
-  title: Go Base Api
+  title: Go Skeleton
   version: v1
 components:
  securitySchemes:
@@ -18,7 +18,7 @@ paths:
     $ref: "paths/health_check.yaml"
 
   # Tag Users
-  /v1/users:
+  /api/v1/users:
     $ref: "paths/v1/user.yaml#without_id"
-  /v1/users/{id}:
+  /api/v1/users/{id}:
     $ref: "paths/v1/user.yaml#with_id"
