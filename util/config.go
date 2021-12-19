@@ -1,6 +1,9 @@
 package util
 
-import "github.com/spf13/viper"
+import (
+	"github.com/phongtv-1971/go-skeleton/constants"
+	"github.com/spf13/viper"
+)
 
 type Config struct {
 	DBDriver string `mapstructure:"db_driver"`
@@ -29,11 +32,11 @@ func LoadConfig(path string, env string) (config Config, err error) {
 	var allConfig ConfigWithEnvironments
 	err = viper.Unmarshal(&allConfig)
 	switch env {
-	case "development":
+	case constants.Development:
 		config = allConfig.Development
-	case "test":
+	case constants.Test:
 		config = allConfig.Test
-	case "production":
+	case constants.Production:
 		config = allConfig.Production
 	}
 	return

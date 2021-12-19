@@ -41,7 +41,8 @@ sqlc:
 	bin/sqlc generate
 
 test:
-	go test -v -cover ./...
+	go test -v -coverprofile cover.out  ./...
+	go tool cover -html=cover.out
 
 server:
 	APP_ENV=$(APP_ENV) go run main.go
@@ -52,4 +53,7 @@ build:
 	@echo "Copy config..."
 	cp config.yaml.example build/config.yaml
 
-.PHONY: tasks migrate-up migrate-down generate-migration create-database drop-database setup-test remove-setup-test sqlc test server build
+mock:
+	bin/mockgen -package mockdb  -destination db/mock/store.go github.com/phongtv-1971/go-skeleton/db/sqlc Store
+
+.PHONY: tasks migrate-up migrate-down generate-migration create-database drop-database setup-test remove-setup-test sqlc test server build mock

@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
 	"github.com/phongtv-1971/go-skeleton/api"
+	"github.com/phongtv-1971/go-skeleton/constants"
 	db "github.com/phongtv-1971/go-skeleton/db/sqlc"
 	"github.com/phongtv-1971/go-skeleton/util"
 	"io"
@@ -15,7 +16,7 @@ import (
 var environment = os.Getenv("APP_ENV")
 
 func init() {
-	if environment == "production" {
+	if environment == constants.Production {
 		gin.SetMode(gin.ReleaseMode)
 		f, _ := os.Create("logs/production.log")
 		gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
@@ -37,7 +38,7 @@ func main() {
 	}
 
 	store := db.NewStore(conn)
-	server := api.NewServer(store)
+	server := api.NewServer(store, environment)
 
 	err = server.Start(config.ServerAddress)
 	if err != nil {
